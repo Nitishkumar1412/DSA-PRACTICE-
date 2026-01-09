@@ -1,40 +1,62 @@
-class Solution {
-  public:
-    vector<int> spirallyTraverse(vector<vector<int>> &mat) {
-        vector<int> ans;
-        if (mat.empty()) return ans;
+#include<iostream>
+using namespace std;
 
-        int srow = 0, scol = 0;
-        int erow = mat.size() - 1;
-        int ecol = mat[0].size() - 1;
+void spiralMatrix(int matrix[][4], int n, int m){
+    int srow=0, scol=0;
+    int erow=n-1, ecol=m-1;
 
-        while (srow <= erow && scol <= ecol) {
+    while(srow<=erow && scol<= ecol){
 
-            // Top row
-            for (int j = scol; j <= ecol; j++)
-                ans.push_back(mat[srow][j]);
-            srow++;
-
-            // Right column
-            for (int i = srow; i <= erow; i++)
-                ans.push_back(mat[i][ecol]);
-            ecol--;
-
-            // Bottom row
-            if (srow <= erow) {
-                for (int j = ecol; j >= scol; j--)
-                    ans.push_back(mat[erow][j]);
-                erow--;
-            }
-
-            // Left column
-            if (scol <= ecol) {
-                for (int i = erow; i >= srow; i--)
-                    ans.push_back(mat[i][scol]);
-                scol++;
-            }
+        // Top Row
+        for(int j= scol; j<=ecol; j++){
+            cout<<matrix[srow][j]<<" ";
         }
-        return ans;
-        
+
+        // Right Column
+        for(int i= srow+1; i<= erow; i++){
+            if(srow==erow){
+                break;
+            }
+            cout<<matrix[i][ecol]<<" ";
+        }
+
+        // Bottom Row
+        for(int j= ecol-1; j>=scol; j--){
+            cout<<matrix[erow][j]<<" ";
+        }
+
+        // Left Column
+        for(int i=erow-1; i>=srow+1; i--){
+            if(scol==ecol){
+                break;
+            }
+            cout<<matrix[i][scol]<<" ";
+        }
+
+        srow++;
+        scol++;
+        erow--;
+        ecol--;
+
     }
-};
+    cout<<endl;
+}
+
+int main(){
+    int matrix[4][4]={
+        {1, 2, 3, 4},
+        {5, 6, 7, 8},
+        {9, 10,11,12},
+        {13,14,15,16}
+    };
+    spiralMatrix(matrix, 4, 4);
+
+    int mat[3][4]={
+        {1, 2, 3, 4},
+        {5, 6, 7, 8},
+        {9, 10,11,12},
+        
+    };
+    spiralMatrix(mat, 3, 4);
+    return 0;
+}
