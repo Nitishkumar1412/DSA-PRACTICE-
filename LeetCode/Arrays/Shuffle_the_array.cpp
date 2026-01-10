@@ -1,3 +1,7 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
 class Solution {
 public:
     vector<int> shuffle(vector<int>& nums, int n) {
@@ -13,4 +17,16 @@ public:
     }
 };
 
+int main() {
+    Solution sol;
+    vector<int> nums = {2, 5, 1, 3, 4, 7};
+    int n = 3;
 
+    vector<int> result = sol.shuffle(nums, n);
+
+    for (int x : result) {
+        cout << x << " ";
+    }
+
+    return 0;
+}
