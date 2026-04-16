@@ -6,13 +6,19 @@ public:
         stack<int> st;
 
         for (int i = n - 1; i >= 0; i--) {
-            
+            // Remove smaller or equal elements
             while (!st.empty() && st.top() <= arr[i]) {
                 st.pop();
             }
 
-            result[i] = st.empty() ? -1 : st.top();
+            // If stack is empty, no greater element
+            if (st.empty()) {
+                result[i] = -1;
+            } else {
+                result[i] = st.top();
+            }
 
+            // Push current element
             st.push(arr[i]);
         }
 
