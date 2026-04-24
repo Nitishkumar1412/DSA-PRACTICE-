@@ -5,7 +5,7 @@ public:
         int maxHeight = arr[0];
 
         for (int i = 1; i < arr.size(); i++) {
-            if (arr[i] >= maxHeight) {  // note >=
+            if (arr[i] >= maxHeight) { 
                 count++;
                 maxHeight = arr[i];
             }
